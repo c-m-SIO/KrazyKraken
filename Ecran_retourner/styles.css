@@ -162,6 +162,12 @@ button:hover {
     transition: all 0.3s ease;
 }
 
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
 .rotate {
     transform: rotate(360deg); /* Animation de rotation */
     background-color: lightcoral; /* Change la couleur */

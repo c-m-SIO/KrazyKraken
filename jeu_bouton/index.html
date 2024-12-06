@@ -147,7 +147,8 @@
       <div class="content">
         <h1>L'Océan et le Corps Humain</h1>
         <div class="question-card"></div>
-          <p>Quels animaux peut-on trouver dans l'océan ?</p>
+          <p>Quel est le principal type de pollution dans les océans ? la reponse ?</p>
+          <p>Indice :  la pollution plastique.</p>
           <div class="input-group">
             <input type="text">
           </div>
@@ -188,8 +189,8 @@
     });
   
     document.getElementById('movingButton').addEventListener('click', function() {
-      showCustomModal("BRAVO !! Tu as reussi à appuyer sur le bouton !");
-});
+      showCustomModal("BRAVO !! Tu as reussi à appuyer sur le bouton !", "En effet, le plastique est le principal type de pollution dans les océans, représentant environ 80 % des déchets marins. Ces déchets incluent des bouteilles, des sacs, des filets de pêche abandonnés, et des microplastiques issus de la dégradation de produits en plastique plus grands. Ils ont un impact dévastateur sur la faune et la flore marines, perturbant les écosystèmes et entrant dans la chaîne alimentaire.");
+    });
   
     // Ajouter un timer qui arrête le mouvement du bouton après 10 secondes
     setTimeout(() => {
@@ -203,10 +204,12 @@
     modal.className = 'modal';
     modal.innerHTML = `
         <h2 style="color: var(--primary); margin-bottom: 1rem;">${title}</h2>
-
-        <button style="width: 100%; padding: 0.8rem;">
-            <a href="../Ecran_retourner/index.html">Suivant</a>
-        </button>
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">${message}</p>
+        <a href="/Ecran_retourner/index.html">
+          <button style="width: 100%; padding: 0.8rem;">
+              Suivant
+          </button>
+        </a>
     `;
     
     document.body.appendChild(modal);
