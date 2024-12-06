@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #041e42;
+            --accent: #00b4d8;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Styles pour l'alerte (masquée au départ) */
+        .alert {
+            display: none; /* L'alerte est masquée par défaut */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centrer l'alerte */
+            width: 60%; /* Largeur de l'alerte */
+            max-width: 500px; /* Limite de la largeur */
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            font-size: 24px; /* Plus gros texte */
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .alertVrai {
+            display: none; /* L'alerte est masquée par défaut */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centrer l'alerte */
+            width: 60%; /* Largeur de l'alerte */
+            max-width: 500px; /* Limite de la largeur */
+            padding: 20px;
+            background-color: #09ff00;
+            color: rgb(0, 0, 0);
+            font-size: 24px; /* Plus gros texte */
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        /* Styles pour l'arrière-plan semi-transparent */
+        .overlay {
+            display: none; /* Masquer l'overlay au départ */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Style du bouton pour déclencher l'alerte */
+        .trigger-btn {
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #reponse1, #reponse2, #reponse3, #reponse4
+        {
+            margin-top: 20px;
+            border: solid;
+            border-radius: 30px;
+            border-color: black;
+        }
+
+        h1 
+        {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <div style="text-align: center; margin-top: 20vh;">
+        <h1>Qu'est ce qui ne va pas dans cette image ?</h1>
+        <img src="image.png" alt="enfant qui se fait kidnapper" height="500">
+
+    <!-- Bouton pour afficher l'alerte -->
+     <div class="container" style="display: flex; flex-wrap: nowrap; flex-direction: column;">
+        <div class="row">
+            <button class="col-6 trigger-btn" id="reponse1" onclick="showAlert()">Il y a un homme qui se jette dans le camion</button>
+            <button class="col-6 trigger-btn" id="reponse1" onclick="showAlert()">Il y a un homme qui protège son argent dans le camion</button>
+            <button class="col-6 trigger-btn" id="reponse1" onclick="showAlertVrai()">Il y a des bouteilles par terre</button>
+            <button class="col-6 trigger-btn" id="reponse1" onclick="showAlert()">Il y a un enfant qui se fais kidnapper par un homme</button>
+        </div>
+    </div>
+
+    <!-- Overlay (fond semi-transparent) -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Alerte -->
+    <div class="alert" id="alert">
+        <p>Mais n'importe quoi réfléchis un peu !!</p>
+    </div>
+
+    <div class="alertVrai" id="alertVrai">
+        <p>Bah oui, cela paraît évident que ce qui ne va pas sur l'image, ce sont les bouteilles en verre jetées dans le sable, qui finiront par être emportées dans l'océan et le polluer !!</p>
+        <button style="color:blue;"><a href="../JeuGif/index.html">Jeu Suivant</a></button>
+    </div>
+
+    <script>
+        // Fonction pour afficher l'alerte
+        function showAlert() {
+            document.getElementById('alert').style.display = 'block'; // Afficher l'alerte
+            document.getElementById('overlay').style.display = 'block'; // Afficher l'overlay
+        }
+
+        function showAlertVrai() {
+            document.getElementById('alertVrai').style.display = 'block'; // Afficher l'alerte
+            document.getElementById('overlay').style.display = 'block'; // Afficher l'overlay
+        }
+
+        // Fonction pour fermer l'alerte
+        function closeAlert() {
+            document.getElementById('alert').style.display = 'none'; // Masquer l'alerte
+            document.getElementById('overlay').style.display = 'none'; // Masquer l'overlay
+        }
+
+        function closeAlertVrai() {
+            document.getElementById('alertVrai').style.display = 'none'; // Masquer l'alerte
+            document.getElementById('overlay').style.display = 'none'; // Masquer l'overlay
+        }
+
+        // Fermer l'alerte lorsqu'on clique sur l'overlay
+        document.getElementById('overlay').addEventListener('click', closeAlert);
+        document.getElementById('overlay').addEventListener('click', closeAlertVrai);
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

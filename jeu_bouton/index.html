@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouton qui bouge dans un cadre</title>
+  <style>
+    :root {
+    --primary: #1a73e8;
+    --secondary: #041e42;
+    --accent: #00b4d8;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        position: relative;
+        width: 90%;
+        max-width: 600px;
+        max-height: 600px;
+        overflow: hidden;
+    }
+
+    .wave {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--accent), transparent);
+        opacity: 0.1;
+        animation: wave 8s ease-in-out infinite;
+    }
+
+    .content {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+    }
+
+    h1 {
+        color: var(--secondary);
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .question-card {
+        padding: 1rem;
+    }
+
+    p {
+        color: #333;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .input-group {
+        display: flex;
+        gap: 1rem;
+    }
+
+    input {
+        flex: 1;
+        padding: 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+    }
+        
+
+    .chiant {
+      position: absolute;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: 2px solid #007bff;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    button {
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    @keyframes wave {
+    0%, 100% { transform: translateY(-50%) rotate(0deg); }
+    50% { transform: translateY(-30%) rotate(20deg); }
+    }
+
+    .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .modal.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="wave"></div>
+      <div class="content">
+        <h1>L'Océan et le Corps Humain</h1>
+        <div class="question-card"></div>
+          <p>Quels animaux peut-on trouver dans l'océan ?</p>
+          <div class="input-group">
+            <input type="text">
+          </div>
+          <button id="movingButton" class="chiant">Valider</button>
+          <p style="visibility: hidden;">Caché</p>
+        </div>
+      </div>
+  </div>
+
+  <script>
+    const button = document.getElementById('movingButton');
+    const container = document.querySelector('.container');
+    let moveEnabled = true; // Variable pour savoir si le mouvement est activé
+  
+    // Fonction pour déplacer le bouton
+    const moveButton = () => {
+      // Obtenir les dimensions du cadre
+      const containerRect = container.getBoundingClientRect();
+  
+      // Dimensions du bouton
+      const buttonWidth = button.offsetWidth;
+      const buttonHeight = button.offsetHeight;
+  
+      // Calcul des positions aléatoires en s'assurant que le bouton reste dans le cadre
+      const x = Math.random() * (containerRect.width - buttonWidth);
+      const y = Math.random() * (containerRect.height - buttonHeight);
+  
+      // Appliquer les nouvelles positions
+      button.style.left = `${x}px`;
+      button.style.top = `${y}px`;
+    };
+  
+    // Écouter l'événement de survol pour déplacer le bouton
+    button.addEventListener('mouseover', () => {
+      if (moveEnabled) {
+        moveButton();
+      }
+    });
+  
+    document.getElementById('movingButton').addEventListener('click', function() {
+      showCustomModal("BRAVO !! Tu as reussi à appuyer sur le bouton !");
+});
+  
+    // Ajouter un timer qui arrête le mouvement du bouton après 10 secondes
+    setTimeout(() => {
+      moveEnabled = false; // Désactiver le mouvement du bouton
+      // Fixer la position actuelle du bouton
+      button.style.position = 'absolute'; // Assurez-vous que la position est bien "absolute"
+    }, 20000); 
+
+    function showCustomModal(title, message) {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <h2 style="color: var(--primary); margin-bottom: 1rem;">${title}</h2>
+
+        <button style="width: 100%; padding: 0.8rem;">
+            <a href="../Ecran_retourner/index.html">Suivant</a>
+        </button>
+    `;
+    
+    document.body.appendChild(modal);
+    setTimeout(() => modal.classList.add('show'), 10);
+    
+    modal.querySelector('button').addEventListener('click', () => {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+    });
+}
+  </script>
+</body>
+</html>

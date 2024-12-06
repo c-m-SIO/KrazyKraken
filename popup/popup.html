@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Jeux Rapides</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="wave"></div>
+        <div class="content">
+            <h1>Quel facteur océanique régule la température de l'eau, comme notre corps régule sa température interne ?</h1>
+            <form id="myForm">
+                <div class="question-card">
+                    <div class="input-group">
+                        <input type="text" id="answerField" placeholder="Réponse" required>
+                        <button type="submit">Soumettre</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <p id="modalMessage">Message de la modal</p>
+            <span class="close">&times;</span>
+        </div>
+    </div>
+    <div class="modal" id="modalGagne">
+        <div class="modal-content">
+            <h1 id="modalTitre">🎉 Bravo ! En effet les courants marins jouent un rôle essentiel dans la régulation de la température de l'eau</h1>
+            <p id="modalMessage">Tout comme notre corps maintient une température interne stable. En déplaçant les eaux chaudes des régions équatoriales vers les pôles et les eaux froides des pôles vers l'équateur, les courants marins équilibrent la température globale des océans. Ce processus, appelé circulation thermohaline, permet de redistribuer la chaleur à travers les océans, régulant ainsi les variations de température. De la même manière que notre corps utilise des mécanismes comme la transpiration ou la frissons pour maintenir une température constante, les courants marins assurent une température équilibrée, favorisant ainsi un environnement marin stable et propice à la vie.</p>
+            <a href="../rebus/rebus.html"><button>Jeu suivant</button></a>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

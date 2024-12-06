@@ -1,0 +1,168 @@
+:root {
+    --primary: #1a73e8;
+    --secondary: #041e42;
+    --accent: #00b4d8;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    overflow: hidden;
+    transform-origin: center;
+    /* Initialement, pas de transformation */
+}
+
+/* Animation de rotation une seule fois */
+.container.rotate {
+    animation: rotateOnce 1s ease forwards; /* Rotation une fois */
+}
+
+/* Animation infinie de l'oscillation */
+.container.wiggle {
+    animation: wiggle 2s linear infinite; /* Oscillation infinie */
+    transform: rotateX(180deg); /* Le conteneur reste retourné */
+}
+
+/* Keyframes pour la rotation */
+@keyframes rotateOnce {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(180deg);
+    }
+}
+
+/* Keyframes pour l'oscillation */
+@keyframes wiggle {
+    0%, 7% {
+        transform: rotateX(180deg) rotateZ(0);
+    }
+    15% {
+        transform: rotateX(180deg) rotateZ(-15deg);
+    }
+    20% {
+        transform: rotateX(180deg) rotateZ(10deg);
+    }
+    25% {
+        transform: rotateX(180deg) rotateZ(-10deg);
+    }
+    30% {
+        transform: rotateX(180deg) rotateZ(6deg);
+    }
+    35% {
+        transform: rotateX(180deg) rotateZ(-4deg);
+    }
+    40%, 100% {
+        transform: rotateX(180deg) rotateZ(0);
+    }
+}
+
+
+.wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--accent), transparent);
+    opacity: 0.1;
+    animation: wave 8s ease-in-out infinite;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.question-card {
+    padding: 1rem;
+}
+
+p {
+    color: #333;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+}
+
+input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+button {
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateY(-50%) rotate(0deg); }
+    50% { transform: translateY(-30%) rotate(20deg); }
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.rotate {
+    transform: rotate(360deg); /* Animation de rotation */
+    background-color: lightcoral; /* Change la couleur */
+}

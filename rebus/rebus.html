@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Jeux Rapides</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="wave"></div>
+        <div class="content">
+            <h1>Trouve la solution du rébus</h1>
+            <div class="div-image">
+                <img src="rebus.png" />
+            </div>
+            <form id="myForm">
+                <div class="question-card">
+                    <div class="input-group">
+                        <input type="text" id="les" placeholder="Réponse" required>
+                        <input type="text" id="dechets" placeholder="Réponse" required>
+                        <input type="text" id="sont" placeholder="Réponse" required>
+                        <input type="text" id="la" placeholder="Réponse" required>
+                        <input type="text" id="maladie" placeholder="Réponse" required>
+                        <input type="text" id="des" placeholder="Réponse" required>
+                        <input type="text" id="hommes" placeholder="Réponse" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <button type="submit">Soumettre</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="modalGagne">
+        <div class="modal-content">
+            <h1 id="modalTitre">🎉 Bravo ! La pollution dans les océans agit bien de manière similaire aux maladies et infections dans le corps humain</h1>
+            <p id="modalMessage">Tout comme les virus et bactéries peuvent perturber les fonctions corporelles, les polluants marins, tels que les plastiques, les produits chimiques et les métaux lourds, altèrent la santé des écosystèmes marins. Ces contaminants peuvent endommager la faune et la flore, perturbant les équilibres naturels. De même que notre système immunitaire lutte contre les infections pour maintenir la santé, les océans disposent de mécanismes de régulation, mais ceux-ci peuvent être submergés par des niveaux excessifs de pollution. Si cette contamination persiste, elle affaiblit les océans, tout comme une maladie chronique affaiblit un organisme humain, rendant l'ensemble de l'écosystème plus vulnérable.</p>
+            <a href="../jeu_bouton/index.html"><button>Jeu suivant</button></a>
+        </div>
+    </div>
+
+    <script src="rebus.js"></script>
+</body>
+</html>

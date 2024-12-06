@@ -1,0 +1,122 @@
+:root {
+    --primary: #1a73e8;
+    --secondary: #041e42;
+    --accent: #00b4d8;
+    --light: #e3f2fd;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 4rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    min-height: 700px;
+}
+
+h1 {
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.2rem;
+}
+
+h2 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 0;
+    position: relative;
+    gap: 8rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    width: 45%;
+}
+
+.point {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    font-size: 1.4rem;
+}
+
+.point:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: var(--accent);
+    color: white;
+}
+
+.point.selected {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(26, 115, 232, 0.3);
+}
+
+#connectionCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    max-width: 600px;
+    width: 90%;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
